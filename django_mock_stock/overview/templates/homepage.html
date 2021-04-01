@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" >
+    
+    <script type="text/javascript" src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/chart.js/dist/Chart.min.css' %}" >
+    <title>Mock Stock</title>
+   
+    
+    <!-- <script>
+      localStorage.setItem()
+    </script> -->
+  </head>
+
+  <header>
+    <nav class="navbar-expand-lg " id="main-nav">
+      <div class="navbar-collapse">
+        <ul class="navbar-nav py-4 mr-auto">
+          <li class="nav-label nav-item">
+            <p>Current Balance: </p>
+          </li>
+          <li class="nav-label nav-item mx-5">
+            <p>Number of Owned Stocks: </p>
+          </li>
+          <li class="nav-label nav-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Stats
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline mr-lg-4">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          <img src="{% static 'images/list.svg' %}" class="nav-list-btn-icn img-thumbnail mx-lg-2"></img>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+
+  <body>
+    <div  id="data-transfer">{{hists}}</div>
+    <div class="container">
+      <img src="https://www.cnbc.com/sp-500/" class="img-thumbnail">
+      <canvas id="myChart"></canvas>
+    </div>
+    
+  </body>
+  
+  <!-- <link rel="stylesheet" href="./mock_stocks.css" type="text/css"> -->
+  <script type="text/javascript" src="{% static 'mock_stocks.js' %}"></script>
+  <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static './homepage.css' %}">
+</html>

@@ -1,0 +1,20 @@
+#data-transfer{
+    display: none;
+}
+
+.navbar{
+    background-color: grey;
+}
+
+.nav-list-btn-icn{
+    width: 2.4em;
+}
+
+#search-bar{
+    /* margin-left: 32vw;
+    margin-right: 3em; */
+}
+
+#main-nav{
+    background-color: grey;
+}
