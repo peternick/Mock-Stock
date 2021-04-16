@@ -54,9 +54,36 @@
 
   <body>
     <div  id="data-transfer">{{hists}}</div>
-    <div class="container">
-      <img src="https://www.cnbc.com/sp-500/" class="img-thumbnail">
-      <canvas id="myChart"></canvas>
+    <div  id="interval-time">{{interval_unit}}</div>
+    <div class="main_page_container container-fluid">
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="container" id="articlesPg1">
+            <h2 class="Jumbotron">S&P 500 Articles</h2>
+            <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/CNBC_logo_mod.png' %}" class="article img-thumbnail"></a>
+            <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/Yahoo_finance_logo.png' %}" class="article img-thumbnail"> </a>
+            <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/market_watch.jpeg' %}" class="article img-thumbnail"> </a>
+          </div>
+        </div>
+        <div class="col col-lg-8" id='chartCont'>
+          <div class="chart-cont container mt-5">
+            <canvas id="myChart"></canvas>
+            <form class="container d-flex justify-content-center .flex-wrap mt-3" action="ret_sp" method="post">
+              {% csrf_token %}
+              <button type="submit" name="new_graph_period" value="1d" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">1 Day</button>
+              <button type="submit" name="new_graph_period" value="5d" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">5 Days</button>
+              <button type="submit" name="new_graph_period" value="1mo" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">1 Month</button>
+              <button type="submit" name="new_graph_period" value="3mo" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">3 Months</button>
+              <button type="submit" name="new_graph_period" value="6mo" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">6 Months</button>
+              <button type="submit" name="new_graph_period" value="1y" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">1 Year</button>
+              <button type="submit" name="new_graph_period" value="max" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">Max</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      
+      
     </div>
     
   </body>
@@ -64,5 +91,5 @@
   <!-- <link rel="stylesheet" href="./mock_stocks.css" type="text/css"> -->
   <script type="text/javascript" src="{% static 'mock_stocks.js' %}"></script>
   <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-  <link rel="stylesheet" type="text/css" href="{% static './homepage.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
 </html>

@@ -1,7 +1,12 @@
+/* used to transfer stock data from the view to the mock_stock.js file */
 #data-transfer{
     display: none;
 }
+#interval-time{
+    display: none;
+}
 
+/*                  ***NAVBAR***               */
 .navbar{
     background-color: grey;
 }
@@ -18,3 +23,34 @@
 #main-nav{
     background-color: grey;
 }
+
+
+
+
+
+/*                          ***MAIN PAGE S&P 500***  */
+#articlesPg1{
+    margin-top: 1em;
+    border: solid yellow;
+}
+
+.main_page_container{
+    margin: 0em;
+}
+
+.article{
+    width: 80%;
+    margin-top: 1em;
+    border-color: grey;
+}
+
+.chart_btn{
+    border-radius: 0.5em;
+}
+
+.chart-cont{
+    border: solid green;
+}
+
+
+

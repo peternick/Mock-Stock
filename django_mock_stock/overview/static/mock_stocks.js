@@ -16,19 +16,41 @@
 // });
 
 
+//  animation code
+
+let articles = document.querySelectorAll(".article"); 
+
+for (i = 0; i < articles.length; i++) {
+    let article = articles[i];
+    article.onmouseenter = function(){
+        article.style.borderColor = 'black';
+    }
+    article.onmouseleave = function(){
+        article.style.borderColor = 'grey';
+    }
+}
 
 
-/* chartjs code */
 
+
+//  chartjs code 
 
 transfered_data = document.querySelector("#data-transfer").innerHTML
+interval_unit = document.querySelector("#interval-time").innerHTML
 data_as_json = JSON.parse(transfered_data)
 close_vals_lst = []
 close_dates_lst = []
 
 for(var date in data_as_json["Close"]){
     close_vals_lst.push(data_as_json["Close"][date])
-    close_dates_lst.push(date.substring(5,10))
+    if(interval_unit == "less_than_days"){
+        local_date_formt = new Date(Date.parse(date))
+        local_time = local_date_formt.getHours() + ':' + local_date_formt.getMinutes()
+        close_dates_lst.push(local_time)
+    }
+    else{
+        close_dates_lst.push(date.substring(0,10))
+    }
     
 }
 // console.log(data_as_json["Close"])
@@ -44,9 +66,10 @@ var myLineChart = new Chart(ctx, {
             label: 'Close stock value',
             data: close_vals_lst,
             fill: false,
-            backgroundColor: 'rgba(100,20,30,1)',
-            borderColor: 'rgba(190,50,140,1)'
+            pointRadius: 3,
+            pointHitRadius: 4,
+            borderColor: 'rgba(190,100,30,0.6)',
         }]
     },
-   
+
 });
