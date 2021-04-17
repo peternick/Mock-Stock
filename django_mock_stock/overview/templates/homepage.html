@@ -20,14 +20,17 @@
   </head>
 
   <header>
-    <nav class="navbar-expand-lg " id="main-nav">
-      <div class="navbar-collapse">
-        <ul class="navbar-nav py-4 mr-auto">
-          <li class="nav-label nav-item">
-            <p>Current Balance: </p>
+    <nav class="navbar navbar-expand-md navbar-dark" id="main_nav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-label nav-item mt-sm-1">
+            <p class="nav_lbl">Current Balance: </p>
           </li>
-          <li class="nav-label nav-item mx-5">
-            <p>Number of Owned Stocks: </p>
+          <li class="nav-label nav-item mt-sm-1 mx-5">
+            <p class="nav_lbl">Number of Owned Stocks: </p>
           </li>
           <li class="nav-label nav-item">
             <div class="dropdown">
@@ -45,7 +48,6 @@
         <form class="form-inline mr-lg-4">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-          <img src="{% static 'images/list.svg' %}" class="nav-list-btn-icn img-thumbnail mx-lg-2"></img>
         </form>
       </div>
     </nav>
@@ -57,33 +59,30 @@
     <div  id="interval-time">{{interval_unit}}</div>
     <div class="main_page_container container-fluid">
       <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-2 col-md-3 col-sm-4">
           <div class="container" id="articlesPg1">
-            <h2 class="Jumbotron">S&P 500 Articles</h2>
+            <h2 class="article_header Jumbotron ml-4">S&P 500 Articles</h2>
             <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/CNBC_logo_mod.png' %}" class="article img-thumbnail"></a>
             <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/Yahoo_finance_logo.png' %}" class="article img-thumbnail"> </a>
             <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/market_watch.jpeg' %}" class="article img-thumbnail"> </a>
           </div>
         </div>
-        <div class="col col-lg-8" id='chartCont'>
-          <div class="chart-cont container mt-5">
+        <div class="col col-xl-9 col-sm-8" id='chartCont'>
+          <div class="chart-cont container mt-2">
             <canvas id="myChart"></canvas>
-            <form class="container d-flex justify-content-center .flex-wrap mt-3" action="ret_sp" method="post">
+            <form class="container d-flex justify-content-center flex-wrap mt-2" action="update_spfivehundred_data" method="post">
               {% csrf_token %}
-              <button type="submit" name="new_graph_period" value="1d" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">1 Day</button>
-              <button type="submit" name="new_graph_period" value="5d" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">5 Days</button>
-              <button type="submit" name="new_graph_period" value="1mo" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">1 Month</button>
-              <button type="submit" name="new_graph_period" value="3mo" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">3 Months</button>
-              <button type="submit" name="new_graph_period" value="6mo" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">6 Months</button>
-              <button type="submit" name="new_graph_period" value="1y" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">1 Year</button>
-              <button type="submit" name="new_graph_period" value="max" class="chart_btn btn btn-outline-primary mr-3 px-xl-3 mr-3 px-lg-2 px-md-2 p-sm-1">Max</button>
+              <button type="submit" name="new_graph_period" value="1d" class="chart_btn btn btn-outline-primary mt-1 mr-xl-3 mr-sm-2 px-xl-3 px-lg-2 p-sm-1">1 Day</button>
+              <button type="submit" name="new_graph_period" value="5d" class="chart_btn btn btn-outline-primary mt-1 mr-xl-3 mr-sm-2 px-xl-3 px-lg-2 p-sm-1">5 Days</button>
+              <button type="submit" name="new_graph_period" value="1mo" class="chart_btn btn btn-outline-primary mt-1 mr-xl-3 mr-sm-2 px-xl-3 px-lg-2 p-sm-1">1 Month</button>
+              <button type="submit" name="new_graph_period" value="3mo" class="chart_btn btn btn-outline-primary mt-1 mr-xl-3 mr-sm-2 px-xl-3 px-lg-2 p-sm-1">3 Months</button>
+              <button type="submit" name="new_graph_period" value="6mo" class="chart_btn btn btn-outline-primary mt-1 mr-xl-3 mr-sm-2 px-xl-3 px-lg-2 p-sm-1">6 Months</button>
+              <button type="submit" name="new_graph_period" value="1y" class="chart_btn btn btn-outline-primary mt-1 mr-xl-3 mr-sm-2 px-xl-3 px-lg-2 p-sm-1">1 Year</button>
+              <button type="submit" name="new_graph_period" value="max" class="chart_btn btn btn-outline-primary mt-1 mr-xl-3 mr-sm-2 px-xl-3 px-lg-2 p-sm-1">Max</button>
             </form>
           </div>
         </div>
       </div>
-      
-      
-      
     </div>
     
   </body>

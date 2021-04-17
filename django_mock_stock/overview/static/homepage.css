@@ -6,21 +6,44 @@
     display: none;
 }
 
+
+/*                  ***GLOBAL SETTINGS***        */
+h1{
+    font-family: 'Staatliches', cursive;
+}
+h2{
+    font-family:'Roboto Mono', monospace;;
+}
+p{
+    font-family: 'Teko', sans-serif;
+    font-size: 1.7vw;
+}
+@font-face {
+    font-family:'Teko';
+    src: url('./fonts/Teko/Teko-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Staatliches';
+    src: url('./fonts/Staatliches/Staatliches-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto_Mono';
+    src: url('./fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf') format('truetype');
+}
+
+
 /*                  ***NAVBAR***               */
 .navbar{
     background-color: grey;
 }
-
+.nav_lbl{
+    margin: 0em;
+}
 .nav-list-btn-icn{
     width: 2.4em;
 }
 
-#search-bar{
-    /* margin-left: 32vw;
-    margin-right: 3em; */
-}
-
-#main-nav{
+#main_nav{
     background-color: grey;
 }
 
@@ -31,7 +54,11 @@
 /*                          ***MAIN PAGE S&P 500***  */
 #articlesPg1{
     margin-top: 1em;
-    border: solid yellow;
+}
+.article_header{
+    font-size: 1.5vw;
+    margin: 0px;
+    margin-left: 0vw;
 }
 
 .main_page_container{
@@ -41,6 +68,7 @@
 .article{
     width: 80%;
     margin-top: 1em;
+    margin-left: 1vw;
     border-color: grey;
 }
 
@@ -49,8 +77,7 @@
 }
 
 .chart-cont{
-    border: solid green;
+    
 }
-
 
 

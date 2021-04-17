@@ -6,14 +6,14 @@ sp500 = yf.Ticker('^gspc')
 
 # Create your views here.
 def home(request):
-    hist = sp500.history(period="1d", interval="15m").to_json(date_format="iso")
+    hist = sp500.history(period="1d", interval="1m").to_json(date_format="iso")
     context = {
         'hists': hist,
         'interval_unit': 'less_than_days'
     }
     return render(request, 'homepage.html', context)
 
-def ret_sp(request):
+def update_spfivehundred_data(request):
     time_period = request.POST["new_graph_period"]
     interv = "1d"
     interval_unit = "more_than_days"
