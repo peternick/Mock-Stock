@@ -34,42 +34,103 @@ for (i = 0; i < articles.length; i++) {
 
 
 //  chartjs code 
+// var myLineChart = null;
+var lineChartsList = []
 
-transfered_data = document.querySelector("#data-transfer").innerHTML
-interval_unit = document.querySelector("#interval-time").innerHTML
-data_as_json = JSON.parse(transfered_data)
-close_vals_lst = []
-close_dates_lst = []
+function updateGraphs(charts_data_lst, interval){
+    var sp_ctx = document.getElementById('sp_chart').getContext('2d');
+    var dow_ctx = document.getElementById('dow_chart').getContext('2d');
+    var nasdaq_ctx = document.getElementById('nasdaq_chart').getContext('2d');
+    let chrt_cntxts = []
+    chrt_cntxts.push(sp_ctx)
+    chrt_cntxts.push(dow_ctx)
+    chrt_cntxts.push(nasdaq_ctx)
 
-for(var date in data_as_json["Close"]){
-    close_vals_lst.push(data_as_json["Close"][date])
-    if(interval_unit == "less_than_days"){
-        local_date_formt = new Date(Date.parse(date))
-        local_time = local_date_formt.getHours() + ':' + local_date_formt.getMinutes()
-        close_dates_lst.push(local_time)
+    var cntxt_index = 0
+    for(var chart_data of charts_data_lst){
+        data_as_json = JSON.parse(chart_data)
+        close_vals_lst = []
+        close_dates_lst = []
+
+        for(var date in data_as_json["Close"]){
+            console.log(date)
+            close_vals_lst.push(data_as_json["Close"][date])
+            if(interval == "less_than_days"){
+                local_date_formt = new Date(Date.parse(date))
+                local_time = local_date_formt.getHours() + ':' + local_date_formt.getMinutes()
+                close_dates_lst.push(local_time)
+            }
+            else{
+                close_dates_lst.push(date.substring(0,10))
+            }
+            
+        }
+
+        var myLineChart = new Chart(chrt_cntxts[cntxt_index], {
+            type: 'line',
+            maintainAspectRatio: false,
+            data: {
+                labels: close_dates_lst,
+                datasets: [{
+                    label: 'Close stock value',
+                    data: close_vals_lst,
+                    fill: false,
+                    pointRadius: 3,
+                    pointHitRadius: 4,
+                    borderColor: 'rgba(190,100,30,0.6)',
+                }]
+            },
+        
+        });
+        lineChartsList.push(myLineChart)
+        cntxt_index++
     }
-    else{
-        close_dates_lst.push(date.substring(0,10))
-    }
-    
 }
-// console.log(data_as_json["Close"])
 
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var myLineChart = new Chart(ctx, {
-    type: 'line',
-    maintainAspectRatio: false,
-    data: {
-        labels: close_dates_lst,
-        datasets: [{
-            label: 'Close stock value',
-            data: close_vals_lst,
-            fill: false,
-            pointRadius: 3,
-            pointHitRadius: 4,
-            borderColor: 'rgba(190,100,30,0.6)',
-        }]
-    },
+sp_transfered_data = document.querySelector("#data_transfer_sp").innerHTML
+dow_transfered_data = document.querySelector("#data_transfer_dow").innerHTML
+nasdaq_transfered_data = document.querySelector("#data_transfer_nasdaq").innerHTML
+interval_unit = document.querySelector("#interval_time").innerHTML
 
-});
+
+transfered_data_lst = []
+transfered_data_lst.push(sp_transfered_data)
+transfered_data_lst.push(dow_transfered_data)
+transfered_data_lst.push(nasdaq_transfered_data)
+updateGraphs(transfered_data_lst, interval_unit)
+// interval_unit_sp = document.querySelector("#interval_time_sp").innerHTML
+// data_as_json_sp = JSON.parse(transfered_data_sp)
+// close_vals_lst = []
+// close_dates_lst = []
+
+// for(var date in data_as_json_sp["Close"]){
+//     close_vals_lst.push(data_as_json_sp["Close"][date])
+//     if(interval_unit_sp == "less_than_days"){
+//         local_date_formt = new Date(Date.parse(date))
+//         local_time = local_date_formt.getHours() + ':' + local_date_formt.getMinutes()
+//         close_dates_lst.push(local_time)
+//     }
+//     else{
+//         close_dates_lst.push(date.substring(0,10))
+//     }
+    
+// }
+
+// var ctx = document.getElementById('myChart').getContext('2d');
+// var myLineChart = new Chart(ctx, {
+//     type: 'line',
+//     maintainAspectRatio: false,
+//     data: {
+//         labels: close_dates_lst,
+//         datasets: [{
+//             label: 'Close stock value',
+//             data: close_vals_lst,
+//             fill: false,
+//             pointRadius: 3,
+//             pointHitRadius: 4,
+//             borderColor: 'rgba(190,100,30,0.6)',
+//         }]
+//     },
+
+// });

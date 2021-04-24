@@ -1,8 +1,8 @@
 /* used to transfer stock data from the view to the mock_stock.js file */
-#data-transfer{
+#data_transfer_sp{
     display: none;
 }
-#interval-time{
+#interval_time_sp{
     display: none;
 }
 
@@ -51,7 +51,7 @@ p{
 
 
 
-/*                          ***MAIN PAGE S&P 500***  */
+/*                          ***MAIN PAGE***  */
 #articlesPg1{
     margin-top: 1em;
 }
@@ -76,8 +76,10 @@ p{
     border-radius: 0.5em;
 }
 
-.chart-cont{
-    
+.main_section{
+    margin-bottom: 8vw;
 }
+
+
 
 
