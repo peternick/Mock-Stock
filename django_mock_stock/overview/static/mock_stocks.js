@@ -53,9 +53,8 @@ function updateGraphs(charts_data_lst, interval){
         close_dates_lst = []
 
         for(var date in data_as_json["Close"]){
-            console.log(date)
             close_vals_lst.push(data_as_json["Close"][date])
-            if(interval == "less_than_days"){
+            if(interval[cntxt_index] == "less_than_days"){
                 local_date_formt = new Date(Date.parse(date))
                 local_time = local_date_formt.getHours() + ':' + local_date_formt.getMinutes()
                 close_dates_lst.push(local_time)
@@ -91,14 +90,14 @@ function updateGraphs(charts_data_lst, interval){
 sp_transfered_data = document.querySelector("#data_transfer_sp").innerHTML
 dow_transfered_data = document.querySelector("#data_transfer_dow").innerHTML
 nasdaq_transfered_data = document.querySelector("#data_transfer_nasdaq").innerHTML
-interval_unit = document.querySelector("#interval_time").innerHTML
-
+interval_unit_lst = document.querySelector("#interval_time").innerHTML
+interval_unit_lst = interval_unit_lst.replaceAll(/\[|\]|\s|'/ig, "").split(",")
 
 transfered_data_lst = []
 transfered_data_lst.push(sp_transfered_data)
 transfered_data_lst.push(dow_transfered_data)
 transfered_data_lst.push(nasdaq_transfered_data)
-updateGraphs(transfered_data_lst, interval_unit)
+updateGraphs(transfered_data_lst, interval_unit_lst)
 // interval_unit_sp = document.querySelector("#interval_time_sp").innerHTML
 // data_as_json_sp = JSON.parse(transfered_data_sp)
 // close_vals_lst = []

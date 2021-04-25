@@ -6,37 +6,59 @@ sp500 = yf.Ticker('^gspc')
 dow = yf.Ticker('^dji')
 nasdaq = yf.Ticker('^ixic')
 
+sp_period = "less_than_days"
+dow_period = "less_than_days"
+nasdaq_period = "less_than_days"
+interval_unit_lst = [sp_period, dow_period, nasdaq_period]
+
 
 # Create your views here.
 def home(request):
+    
     hist_sp = sp500.history(period="1d", interval="1m").to_json(date_format="iso")
     hist_dow = dow.history(period="1d", interval="1m").to_json(date_format="iso")
     hist_nasdaq = nasdaq.history(period="1d", interval="1m").to_json(date_format="iso")
+
+    time_prd_chngd = request.POST
+    if(len(time_prd_chngd) > 0):
+        new_data_lst = update_graph_data(time_prd_chngd)
+        index_name = new_data_lst[2]
+        if(index_name == "hist_sp"):
+            hist_sp = new_data_lst[0]
+        elif(index_name == "hist_dow"):
+            hist_dow = new_data_lst[0]
+        else:
+            hist_nasdaq = new_data_lst[0]
+
+
     context = {
         # 'hists': [hist_sp, hist_dow, hist_nasdaq],
         'hist_sp': hist_sp,
         'hist_dow': hist_dow,
         'hist_nasdaq': hist_nasdaq,
-        'interval_unit': 'less_than_days'
+        'interval_unit': interval_unit_lst
     }
     return render(request, 'homepage.html', context)
 
-def update_graph_data(request):
-    sp_time_period = request.POST["sp_graph_period_btn"]
-    dow_time_period = request.POST["dow_graph_period_btn"]
-    nasdaq_time_period = request.POST["nasdaq_graph_period_btn"]
-
-    context = None
-    if(len(sp_time_period) > 1):
-        context = _obtain_interval_data(sp_time_period, sp500)
-    elif(len(dow_time_period) > 1):
-        context = _obtain_interval_data(dow_time_period, dow)
+def update_graph_data(request_post_dict):
+    SP = 'hist_sp'
+    DOW = 'hist_dow'
+    NASDAQ = 'hist_nasdaq'
+    new_data_lst = []
+    if(request_post_dict.__contains__("sp_graph_period_btn")):
+        new_data_lst = _obtain_interval_data(request_post_dict["sp_graph_period_btn"], sp500, SP)
+        interval_unit_lst[0] = new_data_lst[1]
+    elif(request_post_dict.__contains__("dow_graph_period_btn")):
+        new_data_lst = _obtain_interval_data(request_post_dict["dow_graph_period_btn"], dow, DOW)
+        interval_unit_lst[1] = new_data_lst[1]
     else:
-        context = _obtain_interval_data(nasdaq_time_period, nasdaq)
+        new_data_lst = _obtain_interval_data(request_post_dict["nasdaq_graph_period_btn"], nasdaq, NASDAQ)
+        interval_unit_lst[2] = new_data_lst[1]
     
-    return render(request, 'homepage.html', context)
+    return new_data_lst
 
-def _obtain_interval_data(time_period, tikr_data):
+
+def _obtain_interval_data(time_period, tikr_data, index_data_key):
     interv = "1d"
     interval_unit = "more_than_days"
     if(time_period == "1d"):
@@ -55,9 +77,10 @@ def _obtain_interval_data(time_period, tikr_data):
     else:
         interv = "1mo"
     hist = tikr_data.history(period=time_period, interval=interv).to_json(date_format="iso")
-    context = {
-        'hists': [hist],
-        'interval_unit': interval_unit
-    }
-    return context
+    data_lst = []
+    data_lst.append(hist)
+    data_lst.append(interval_unit)
+    data_lst.append(index_data_key)
+
+    return data_lst
     
