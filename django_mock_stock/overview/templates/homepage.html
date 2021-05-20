@@ -1,4 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
 {% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,39 +22,7 @@
     </script> -->
   </head>
 
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark" id="main_nav">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-label nav-item mt-sm-1">
-            <p class="nav_lbl">Current Balance: </p>
-          </li>
-          <li class="nav-label nav-item mt-sm-1 mx-5">
-            <p class="nav_lbl">Number of Owned Stocks: </p>
-          </li>
-          <li class="nav-label nav-item">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Stats
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline mr-lg-4">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-  </header>
+
 
 
   <body>
@@ -144,3 +115,5 @@
   <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
 </html>
+
+{% endblock content %}

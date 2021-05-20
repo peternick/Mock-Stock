@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" >
+    
+    <script type="text/javascript" src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/chart.js/dist/Chart.min.css' %}" >
+    <title>Mock Stock</title>
+   
+    
+    <!-- <script>
+      localStorage.setItem()
+    </script> -->
+  </head>
+
+  
+  <body>
+        <div class="d-none" id="test_data_transfer">{{data}}</div>
+  </body>
+  <script>
+    test_raw_trans = document.querySelector("#test_data_transfer").innerHTML
+    console.log(test_raw_trans)
+  </script>
+  <!-- <script type="text/javascript" src="{% static 'mock_stocks.js' %}"></script> -->
+  <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}"> -->
