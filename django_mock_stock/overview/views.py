@@ -41,11 +41,15 @@ def home(request):
     return render(request, 'homepage.html', context)
 
 def ticker_page(request):
-    dic = {"key1": "val", "notha": "nothaval"}
+    searched_input = request.POST['searched_text'][0]
+    specified_ticker = yf.Ticker(searched_input)
+    ticker_hist = specified_ticker.history(period="1d", interval="1m")
+    ticker_info = specified_ticker.info
+    dic = {"hist": ticker_hist, "info": ticker_info}
     context = {
-        "data" : dic 
+        "ticker_data" : dic 
     }
-    return render(request, 'test_data_transfer.html', context)
+    return render(request, 'specified_stock.html', context)
 
 def _update_graph_data(request_post_dict):
     SP = 'hist_sp'

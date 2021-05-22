@@ -1,0 +1,46 @@
+/*                  ***GLOBAL SETTINGS***        */
+h1{
+    font-family: 'Staatliches', cursive;
+    font-size: 1.7em;
+}
+h2{
+    font-family:'Roboto Mono', monospace;
+    font-size: 1.7em;
+}
+h3{
+    font-family: 'Teko', sans-serif;
+    font-size: 1.7em;
+}
+p{
+    font-family:'Roboto Mono', monospace;
+    font-size: 1.1em;
+}
+
+@font-face {
+    font-family:'Teko';
+    src: url('./fonts/Teko/Teko-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Staatliches';
+    src: url('./fonts/Staatliches/Staatliches-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto_Mono';
+    src: url('./fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf') format('truetype');
+}
+
+
+/*                  ***NAVBAR***               */
+.navbar{
+    background-color: grey;
+}
+.nav_lbl{
+    margin: 0em;
+}
+.nav-list-btn-icn{
+    width: 2.4em;
+}
+
+#main_nav{
+    background-color: grey;
+}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" >
+    
+    <script type="text/javascript" src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/chart.js/dist/Chart.min.css' %}" >
+    <title>Mock Stock</title>
+   
+  </head>
+
+  <style>
+      .pt-6,
+      .py-6 {
+        padding-top: 10rem !important;
+      }
+
+      .pr-6,
+      .px-6 {
+        padding-right: 10rem !important;
+      }
+
+      .pb-6,
+      .py-6 {
+        padding-bottom: 10rem !important;
+      }
+
+      .pl-6,
+      .px-6 {
+        padding-left: 10rem !important;
+      }
+      #transaction_info_and_chart{
+        border: solid blue;
+      }
+      #fir{
+        border: solid green;
+      }
+      #sec{
+        border: solid red;
+      }
+  </style>
+  <body >
+    <div class="d-none" id="data_transfer">{{ticker_data}}</div>
+    <div class="container-fluid">
+      <div class="row pt-4" id="page_headers">
+        <div class="col-lg-6 px-lg-2 pl-xl-5 pl-6 text-left">
+          <h2 class="container">Company Name</h2>
+        </div>
+        <div class="col-lg-6 px-lg-1 px-xl-5 pr-6 text-right">
+          <h2 class="container">Ticker</h2>
+        </div>
+      </div>
+      <div class="row pt-4" id="transaction_info_and_chart">
+        <div class="col-lg-6 px-lg-2 pl-xl-5 text-left" id="fir">
+          <p class="pt-4">You Own: (num shares)</p>
+          <p>Current Value Of All Shares: num</p>
+          <p class="mb-5">Stock Price: </p>
+          <div class="form-row pt-5">
+            <div class="col-3">
+              <p>Quantity: </p>
+            </div>
+            <div class="col-4">
+              <input class="form-control" type="text" name="quantity_shares_text" aria-label="quantity_shares">
+            </div>
+          </div>
+          <div class="form-row pt-2">
+            <div class="col-2">
+              <button class="container-fluid btn btn-success" type="submit" name="buy_btn" value="buy">Buy</button>
+            </div>
+            <div class="col-2">
+              <button class="container-fluid btn btn-warning" type="submit" name="sell_btn" value="sell">Sell</button>
+            </div>
+          </div>
+          <p class="pt-3">Total Value (val)</p>
+        </div>
+        <div class="col-lg-6 px-lg-1 px-xl-5 text-right" id="sec">
+          <h2 class="container">placeholder</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <!-- <script type="text/javascript" src="{% static 'mock_stocks.js' %}"></script> -->
+  <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}"> -->
+
+  {% endblock content %}
