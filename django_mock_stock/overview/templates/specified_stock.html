@@ -64,7 +64,7 @@
           <p>Current Value Of All Shares: num</p>
           <p class="mb-5">Stock Price: </p>
           <div class="form-row pt-5">
-            <div class="col-3">
+            <div class="col-2">
               <p>Quantity: </p>
             </div>
             <div class="col-4">
@@ -79,16 +79,16 @@
               <button class="container-fluid btn btn-warning" type="submit" name="sell_btn" value="sell">Sell</button>
             </div>
           </div>
-          <p class="pt-3">Total Value (val)</p>
+          <p class="pt-3">Total Value: (val)</p>
         </div>
         <div class="col-lg-6 px-lg-1 px-xl-5 text-right" id="sec">
-          <h2 class="container">placeholder</h2>
+          <canvas id="stock_chart"></canvas>
         </div>
       </div>
     </div>
   </body>
-  
-  <!-- <script type="text/javascript" src="{% static 'mock_stocks.js' %}"></script> -->
+
+  <script type="text/javascript" src="{% static 'specified_stock.js' %}"></script>
   <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
   <!-- <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}"> -->
 
