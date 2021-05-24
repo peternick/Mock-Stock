@@ -41,11 +41,12 @@ def home(request):
     }
     return render(request, 'homepage.html', context)
 
-# TODO: incorrect stock price data is being sent
+
 def ticker_page(request):
-    searched_input = request.POST['searched_text'][0]
+    searched_input = request.POST['searched_text']
     specified_ticker = yf.Ticker(searched_input)
-    ticker_hist = json.loads(specified_ticker.history(period="1d", interval="30m").to_json(date_format="iso"))
+    ticker_hist = json.loads(specified_ticker.history(period="1d", interval="1m").to_json(date_format="iso"))
+    # print(specified_ticker.history(period="1d", interval="30m").to_json(date_format="iso"))
     ticker_info = specified_ticker.info
     dic = {"hist": ticker_hist, "info": ticker_info, "time_interval": "less_than_days"}
     context = {

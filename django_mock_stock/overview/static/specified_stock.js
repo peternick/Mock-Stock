@@ -1,7 +1,7 @@
 
 ticker_data_string = document.querySelector("#data_transfer").innerHTML
 filtered_data_str = pyJsonStr_to_jsJsonStr(ticker_data_string)
-ticker_data = JSON.parse(ticker_data_string)
+ticker_data = JSON.parse(filtered_data_str)
 
 updateGraph(ticker_data)
 
@@ -41,6 +41,7 @@ function updateGraph(ticker_data){
 
 }
 
+// TODO: test for more edge cases
 function repl_correct_wrd(match, nth_str, offset, entire_str){
     repl = match.substring(0,1) + "\""
     if(match.substring(0,1) === "\'"){
@@ -50,10 +51,11 @@ function repl_correct_wrd(match, nth_str, offset, entire_str){
     return repl
 }
 
+// TODO: test for more edge cases
 function pyJsonStr_to_jsJsonStr(python_json_str){
     replace_singQuotes = python_json_str.replaceAll(/\W\'|\'\W/g, /* "\"" */ repl_correct_wrd)
-    none_with_quotes = ticker_data_string.replaceAll(/None/g, "\"None\"")
-    conv_to_js_bools = ticker_data_string.replaceAll(/False/g, "false").replaceAll(/True/g, "true")
+    none_with_quotes = replace_singQuotes.replaceAll(/None/g, "\"None\"")
+    conv_to_js_bools = none_with_quotes.replaceAll(/False/g, "false").replaceAll(/True/g, "true")
     
     return conv_to_js_bools
 }

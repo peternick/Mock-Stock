@@ -37,29 +37,14 @@
       .px-6 {
         padding-left: 10rem !important;
       }
-      #transaction_info_and_chart{
-        border: solid blue;
-      }
-      #fir{
-        border: solid green;
-      }
-      #sec{
-        border: solid red;
-      }
+     
   </style>
   <body >
     <div class="d-none" id="data_transfer">{{ticker_data}}</div>
     <div class="container-fluid">
-      <div class="row pt-4" id="page_headers">
-        <div class="col-lg-6 px-lg-2 pl-xl-5 pl-6 text-left">
-          <h2 class="container">Company Name</h2>
-        </div>
-        <div class="col-lg-6 px-lg-1 px-xl-5 pr-6 text-right">
-          <h2 class="container">Ticker</h2>
-        </div>
-      </div>
+      <h1 class="jumbotron p-1 mt-1 text-center">Company Name (ticker)</h1>
       <div class="row pt-4" id="transaction_info_and_chart">
-        <div class="col-lg-6 px-lg-2 pl-xl-5 text-left" id="fir">
+        <div class="col-lg-4 px-lg-2 pl-xl-5 text-left" id="fir">
           <p class="pt-4">You Own: (num shares)</p>
           <p>Current Value Of All Shares: num</p>
           <p class="mb-5">Stock Price: </p>
@@ -79,10 +64,13 @@
               <button class="container-fluid btn btn-warning" type="submit" name="sell_btn" value="sell">Sell</button>
             </div>
           </div>
-          <p class="pt-3">Total Value: (val)</p>
+          <p class="pt-5">Total Value: (val)</p>
         </div>
-        <div class="col-lg-6 px-lg-1 px-xl-5 text-right" id="sec">
+        <div class="col-lg-7 px-lg-1 px-xl-2" id="sec">
           <canvas id="stock_chart"></canvas>
+        </div>
+        <div class="col-1 spacer">
+          
         </div>
       </div>
     </div>
