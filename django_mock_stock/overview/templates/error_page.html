@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" >
+    
+    <script type="text/javascript" src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/chart.js/dist/Chart.min.css' %}" >
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+        <h1 class="jumbotron">ERROR :(</h1>
+        <h4> You typed an invalid ticker into the search bar. Please try again. </h4>
+    </div>
+  </body>
+  <style>
+      .jumbotron{
+          color: red;
+      }
+  </style>
+</html>
+
+{% endblock content %}

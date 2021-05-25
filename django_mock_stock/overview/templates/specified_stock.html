@@ -44,33 +44,30 @@
     <div class="container-fluid">
       <h1 class="jumbotron p-1 mt-1 text-center">Company Name (ticker)</h1>
       <div class="row pt-4" id="transaction_info_and_chart">
-        <div class="col-lg-4 px-lg-2 pl-xl-5 text-left" id="fir">
+        <div class="col-md-4 px-lg-2 text-left" id="fir">
           <p class="pt-4">You Own: (num shares)</p>
           <p>Current Value Of All Shares: num</p>
           <p class="mb-5">Stock Price: </p>
           <div class="form-row pt-5">
-            <div class="col-2">
+            <div class="col-xl-3 col-lg-4 col-md-5">
               <p>Quantity: </p>
             </div>
-            <div class="col-4">
+            <div class="col-md-4">
               <input class="form-control" type="text" name="quantity_shares_text" aria-label="quantity_shares">
             </div>
           </div>
           <div class="form-row pt-2">
-            <div class="col-2">
+            <div class="col-lg-3 col-md-4">
               <button class="container-fluid btn btn-success" type="submit" name="buy_btn" value="buy">Buy</button>
             </div>
-            <div class="col-2">
+            <div class="col-lg-3 col-md-4">
               <button class="container-fluid btn btn-warning" type="submit" name="sell_btn" value="sell">Sell</button>
             </div>
           </div>
           <p class="pt-5">Total Value: (val)</p>
         </div>
-        <div class="col-lg-7 px-lg-1 px-xl-2" id="sec">
+        <div class="col-md-7 col-sm-10 px-xs-0 px-xl-2" id="sec">
           <canvas id="stock_chart"></canvas>
-        </div>
-        <div class="col-1 spacer">
-          
         </div>
       </div>
     </div>
