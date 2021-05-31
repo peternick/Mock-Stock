@@ -1,0 +1,40 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" >
+    
+    <script type="text/javascript" src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/chart.js/dist/Chart.min.css' %}" >
+    <title>Mock Stock</title>
+   
+  </head>
+
+  <body>
+    <div class=container-fluid>
+        <div class="form-row pt-5">
+            <div class="col-auto">
+              <p>Username: </p>
+            </div>
+            <div class="col-auto">
+              <input class="form-control" type="text" name="username_input">
+            </div>
+          </div>
+        </div>
+        <div class="form-row pt-5">
+            <div class="col-auto">
+              <p>Password: </p>
+            </div>
+            <div class="col-auto">
+              <input class="form-control" type="text" name="password_input">
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
