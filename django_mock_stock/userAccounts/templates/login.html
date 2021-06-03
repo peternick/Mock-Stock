@@ -24,6 +24,9 @@
       }
 
     </style>
+    <!-- This div is used to send data from the server to the front-end; when 'bool_create_account' is
+        true the page will dynamically update to indicate to the user that they will be creating a new
+        account instead of logging in -->
     <div class="d-none" id="create_accnt">{{bool_create_account}}</div>
   </head>
 
@@ -75,14 +78,4 @@
       </form>
     </div>
   </body>
-  <!-- <script>
-    var create_accnt_lnk = document.querySelector("#create_accnt_lnk")
-    var login_btn = document.querySelector("#login_btn")
-
-    create_accnt_lnk.onclick = function(){
-      create_accnt_lnk.style.setProperty("display", "none")
-      login_btn.innerHTML = "Create Account"
-    }
-
-  </script> -->
 </html>
