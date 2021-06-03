@@ -33,7 +33,11 @@
         {% csrf_token %}
         <div class="form-row justify-content-center" style="padding-top: 7vw; border-radius: 10% 10% 0% 0%;">
           <div class="col-auto">
-            <p>Username: </p>
+            {% if bool_create_account == 'true' %}
+              <p>New Username: </p>
+            {% else %}
+              <p>Username: </p>
+            {% endif %}
           </div>
           <div class="col-auto">
             <input class="form-control" type="text" name="username">
@@ -41,7 +45,11 @@
         </div>
         <div class="form-row pt-4 justify-content-center">
           <div class="col-auto">
-            <p>Password: </p>
+            {% if bool_create_account == 'true' %}
+              <p>New Password: </p>
+            {% else %}
+              <p>Password: </p>
+            {% endif %}
           </div>
           <div class="col-auto">
             <input class="form-control" type="password" name="password">
@@ -49,11 +57,19 @@
         </div>
         <div class="form-row justify-content-center" style="padding-bottom: 7vw; padding-top: 1vw; border-radius: 0% 0% 10% 10%;">
           <div class="col-auto">
-            <!-- <a href="#" id="create_accnt_lnk">Create Account </a> -->
-            <button class="btn btn-success" type="submit" name="create_accnt" id="create_accnt">Create Account</button>
+            {% if bool_create_account != 'true' %}
+              <button name="create_accnt" value="true" type="submit" style="border: none; background-color: unset;">
+                <a name="create_accnt" id="create_accnt_lnk" style="color: turquoise;">Create Account </a>
+              </button>
+            {% else %}
+            {% endif %}
           </div>
           <div class="col-auto">
+            {% if bool_create_account == 'true' %}
+              <button class="btn btn-success" type="submit" name='balance' value=10000.00 id="create_accnt_btn">Create Account</button>
+            {% else %}
               <button class="btn btn-success" type="submit" name="login_btn" id="login_btn">Login</button>
+            {% endif %}
           </div>
         </div>
       </form>
