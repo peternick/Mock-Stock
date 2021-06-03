@@ -13,28 +13,60 @@
     <script type="text/javascript" src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'node_modules/chart.js/dist/Chart.min.css' %}" >
     <title>Mock Stock</title>
-   
+    
+    <style>
+      #page_container{
+        padding-top: 10%;
+      }
+      #login_widgets > .form-row{
+        background-color: rgb(250, 248, 183);
+        margin: 0vw 15vw;
+      }
+
+    </style>
+    <div class="d-none" id="create_accnt">{{bool_create_account}}</div>
   </head>
 
   <body>
-    <div class=container-fluid>
-        <div class="form-row pt-5">
-            <div class="col-auto">
-              <p>Username: </p>
-            </div>
-            <div class="col-auto">
-              <input class="form-control" type="text" name="username_input">
-            </div>
+    <div class="container-fluid" id="page_container">
+      <form class="container" id="login_widgets" method="post" action="create_accnt">
+        {% csrf_token %}
+        <div class="form-row justify-content-center" style="padding-top: 7vw; border-radius: 10% 10% 0% 0%;">
+          <div class="col-auto">
+            <p>Username: </p>
+          </div>
+          <div class="col-auto">
+            <input class="form-control" type="text" name="username">
           </div>
         </div>
-        <div class="form-row pt-5">
-            <div class="col-auto">
-              <p>Password: </p>
-            </div>
-            <div class="col-auto">
-              <input class="form-control" type="text" name="password_input">
-            </div>
+        <div class="form-row pt-4 justify-content-center">
+          <div class="col-auto">
+            <p>Password: </p>
+          </div>
+          <div class="col-auto">
+            <input class="form-control" type="password" name="password">
           </div>
         </div>
+        <div class="form-row justify-content-center" style="padding-bottom: 7vw; padding-top: 1vw; border-radius: 0% 0% 10% 10%;">
+          <div class="col-auto">
+            <!-- <a href="#" id="create_accnt_lnk">Create Account </a> -->
+            <button class="btn btn-success" type="submit" name="create_accnt" id="create_accnt">Create Account</button>
+          </div>
+          <div class="col-auto">
+              <button class="btn btn-success" type="submit" name="login_btn" id="login_btn">Login</button>
+          </div>
+        </div>
+      </form>
     </div>
   </body>
+  <!-- <script>
+    var create_accnt_lnk = document.querySelector("#create_accnt_lnk")
+    var login_btn = document.querySelector("#login_btn")
+
+    create_accnt_lnk.onclick = function(){
+      create_accnt_lnk.style.setProperty("display", "none")
+      login_btn.innerHTML = "Create Account"
+    }
+
+  </script> -->
+</html>
