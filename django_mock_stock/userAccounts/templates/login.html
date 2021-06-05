@@ -15,8 +15,8 @@
     <title>Mock Stock</title>
     
     <style>
-      #page_container{
-        padding-top: 10%;
+      #login_widgets{
+        padding-top: 6%;
       }
       #login_widgets > .form-row{
         background-color: rgb(250, 248, 183);
@@ -32,7 +32,14 @@
 
   <body>
     <div class="container-fluid" id="page_container">
-      <form class="container" id="login_widgets" method="post" action="create_accnt">
+      <p class="text-center" style="color: red; padding-top: 3%;">
+        {% if messages %}
+          {% for message in messages %}
+            {{message}}
+          {% endfor %}
+        {% endif %}
+      </p>
+      <form class="container" id="login_widgets" method="post" action="access_accounts">
         {% csrf_token %}
         <div class="form-row justify-content-center" style="padding-top: 7vw; border-radius: 10% 10% 0% 0%;">
           <div class="col-auto">
@@ -71,7 +78,7 @@
             {% if bool_create_account == 'true' %}
               <button class="btn btn-success" type="submit" name='balance' value=10000.00 id="create_accnt_btn">Create Account</button>
             {% else %}
-              <button class="btn btn-success" type="submit" name="login_btn" id="login_btn">Login</button>
+              <button class="btn btn-success" type="submit" name="login_btn" value="login" id="login_btn">Login</button>
             {% endif %}
           </div>
         </div>
