@@ -4,3 +4,4 @@ notes_for_css_styling
 package-lock.json
 package.json
 node_modules
+django_mock_stock/db.sqlite3

@@ -15,6 +15,22 @@
     <title>Mock Stock</title>
     
     <style>
+      h1{
+          font-family: 'Staatliches', cursive;
+          font-size: 1.7em;
+      }
+      h2{
+          font-family:'Roboto Mono', monospace;
+          font-size: 1.7em;
+      }
+      h3{
+          font-family: 'Teko', sans-serif;
+          font-size: 1.7em;
+      }
+      p{
+          font-family:'Roboto Mono', monospace;
+          font-size: 1.1em;
+      }
       #login_widgets{
         padding-top: 6%;
       }
@@ -30,7 +46,7 @@
     <div class="d-none" id="create_accnt">{{bool_create_account}}</div>
   </head>
 
-  <body>
+  <body style="background-color: rgb(209, 209, 209);">
     <div class="container-fluid" id="page_container">
       <p class="text-center" style="color: red; padding-top: 3%;">
         {% if messages %}
@@ -41,7 +57,11 @@
       </p>
       <form class="container" id="login_widgets" method="post" action="access_accounts">
         {% csrf_token %}
-        <div class="form-row justify-content-center" style="padding-top: 7vw; border-radius: 10% 10% 0% 0%;">
+        {% if bool_create_account == 'true' %}
+         <p class="container-fluid text-center"> *Username must contain at least 6 characters and password must have at least 1 number*</p>
+        {% endif %}
+        
+        <div class="form-row justify-content-center" style="padding-top: 7vw; border-radius: 10% 10% 0% 0%; border: solid grey; border-bottom: none;">
           <div class="col-auto">
             {% if bool_create_account == 'true' %}
               <p>New Username: </p>
@@ -53,7 +73,7 @@
             <input class="form-control" type="text" name="username">
           </div>
         </div>
-        <div class="form-row pt-4 justify-content-center">
+        <div class="form-row pt-4 justify-content-center" style="border-left: solid grey; border-right: solid grey;">
           <div class="col-auto">
             {% if bool_create_account == 'true' %}
               <p>New Password: </p>
@@ -65,10 +85,10 @@
             <input class="form-control" type="password" name="password">
           </div>
         </div>
-        <div class="form-row justify-content-center" style="padding-bottom: 7vw; padding-top: 1vw; border-radius: 0% 0% 10% 10%;">
+        <div class="form-row justify-content-center" style="padding-bottom:7vw; padding-top:1vw; border-radius: 0% 0% 10% 10%; border: solid grey; border-top: none;">
           <div class="col-auto">
             {% if bool_create_account != 'true' %}
-              <button name="create_accnt" value="true" type="submit" style="border: none; background-color: unset;">
+              <button class="pl-5 ml-5" name="create_accnt" value="true" type="submit" style="border: none; background-color: unset;">
                 <a name="create_accnt" id="create_accnt_lnk" style="color: turquoise;">Create Account </a>
               </button>
             {% else %}
