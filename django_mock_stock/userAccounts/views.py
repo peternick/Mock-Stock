@@ -14,7 +14,7 @@ def login(request):
             passwd = request.POST.get("password")
             accnt = Account.objects.all().filter(username=user, password=passwd)
             if accnt.exists():
-                return redirect('home')
+                return redirect('home/')
  
         else:
             print('here')
