@@ -37,7 +37,7 @@ for (i = 0; i < articles.length; i++) {
 // var myLineChart = null;
 var lineChartsList = []
 
-function updateGraphs(charts_data_lst, interval){
+function updateGraphs(charts_data_dic, interval){
     var sp_ctx = document.getElementById('sp_chart').getContext('2d');
     var dow_ctx = document.getElementById('dow_chart').getContext('2d');
     var nasdaq_ctx = document.getElementById('nasdaq_chart').getContext('2d');
@@ -47,8 +47,8 @@ function updateGraphs(charts_data_lst, interval){
     chrt_cntxts.push(nasdaq_ctx)
 
     var cntxt_index = 0
-    for(var chart_data of charts_data_lst){
-        data_as_json = JSON.parse(chart_data)
+    for(var chart_data of Object.keys(charts_data_dic)){
+        const data_as_json = JSON.parse(charts_data_dic[chart_data])
         close_vals_lst = []
         close_dates_lst = []
 
@@ -87,17 +87,13 @@ function updateGraphs(charts_data_lst, interval){
 }
 
 
-sp_transfered_data = document.querySelector("#data_transfer_sp").innerHTML
-dow_transfered_data = document.querySelector("#data_transfer_dow").innerHTML
-nasdaq_transfered_data = document.querySelector("#data_transfer_nasdaq").innerHTML
+chart_data = document.querySelector("#chart_data").innerHTML
+chart_data = JSON.parse(chart_data)
+
 interval_unit_lst = document.querySelector("#interval_time").innerHTML
 interval_unit_lst = interval_unit_lst.replaceAll(/\[|\]|\s|'/ig, "").split(",")
 
-transfered_data_lst = []
-transfered_data_lst.push(sp_transfered_data)
-transfered_data_lst.push(dow_transfered_data)
-transfered_data_lst.push(nasdaq_transfered_data)
-updateGraphs(transfered_data_lst, interval_unit_lst)
+updateGraphs(chart_data, interval_unit_lst)
 // interval_unit_sp = document.querySelector("#interval_time_sp").innerHTML
 // data_as_json_sp = JSON.parse(transfered_data_sp)
 // close_vals_lst = []

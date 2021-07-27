@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from userAccounts.models import Account
 import yfinance as yf
 import pandas as ps
 import json
@@ -33,10 +34,7 @@ def home(request):
 
 
     context = {
-        # 'hists': [hist_sp, hist_dow, hist_nasdaq],
-        'hist_sp': hist_sp,
-        'hist_dow': hist_dow,
-        'hist_nasdaq': hist_nasdaq,
+        'hists': json.dumps({"hist_sp": hist_sp, "hist_dow": hist_dow, "hist_nasdaq": hist_nasdaq,}),
         'interval_unit': interval_unit_lst
     }
     return render(request, 'homepage.html', context)
