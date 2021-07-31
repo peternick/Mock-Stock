@@ -25,9 +25,9 @@
   <body>
     <div class="d-none" id="chart_data">{{hists}}</div>
     <div class="d-none" id="interval_time">{{interval_unit}}</div>
-    <div class="main_page_container container-fluid">
-      <div class="main_section row">
-        <div class="col-lg-2 col-sm-2">
+    <div class="main_page_container container-fluid ">
+      <div class="main_section row border-bottom border-primary">
+        <div class="col-lg-2 col-sm-2 ">
           <div class="container" id="articlesPg1">
             <h2 class="article_header Jumbotron ml-4">S&P 500 Articles</h2>
             <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/CNBC_logo_mod.png' %}" class="article img-thumbnail"></a>
@@ -35,8 +35,9 @@
             <a href="https://www.cnbc.com/sp-500/"> <img src="{% static 'images/market_watch.jpeg' %}" class="article img-thumbnail"> </a>
           </div>
         </div>
-        <div class="col col-xl-9 col-sm-8" id='chartCont'>
+        <div class="col col-xl-9 col-sm-8 " id='chartCont'>
           <div class="chart-cont container mt-2">
+            <h2 class="chart-title text-center ">S&P 500</h2>
             <canvas id="sp_chart"></canvas>
             <form class="container d-flex justify-content-center flex-wrap mt-2" action="update_graph_data" method="post">
               {% csrf_token %}
@@ -51,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div class="main_section row">
+      <div class="main_section row border-bottom border-primary">
         <div class="col-lg-2 col-sm-2">
           <div class="container" id="articlesPg2">
             <h2 class="article_header Jumbotron ml-4">Dow Articles</h2>
@@ -62,6 +63,7 @@
         </div>
         <div class="col col-xl-9 col-sm-8">
           <div class="chart-cont container mt-2">
+            <h2 class="chart-title text-center">Dow Jones</h2>
             <canvas id="dow_chart"></canvas>
             <form class="container d-flex justify-content-center flex-wrap mt-2" action="update_graph_data" method="post">
               {% csrf_token %}
@@ -87,6 +89,7 @@
         </div>
         <div class="col col-xl-9 col-sm-8">
           <div class="chart-cont container mt-2">
+            <h2 class="chart-title text-center">NASDAQ</h2>
             <canvas id="nasdaq_chart"></canvas>
             <form class="container d-flex justify-content-center flex-wrap mt-2" action="update_graph_data" method="post">
               {% csrf_token %}

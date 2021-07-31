@@ -47,8 +47,8 @@ function updateGraphs(charts_data_dic, interval){
     chrt_cntxts.push(nasdaq_ctx)
 
     var cntxt_index = 0
-    for(var chart_data of Object.keys(charts_data_dic)){
-        const data_as_json = JSON.parse(charts_data_dic[chart_data])
+    for(var index of Object.keys(charts_data_dic)){
+        const data_as_json = JSON.parse(charts_data_dic[index])
         close_vals_lst = []
         close_dates_lst = []
 
@@ -56,7 +56,9 @@ function updateGraphs(charts_data_dic, interval){
             close_vals_lst.push(data_as_json["Close"][date])
             if(interval[cntxt_index] == "less_than_days"){
                 local_date_formt = new Date(Date.parse(date))
-                local_time = local_date_formt.getHours() + ':' + local_date_formt.getMinutes()
+                var minutes = local_date_formt.getMinutes()
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                local_time = local_date_formt.getHours() + ':' + minutes
                 close_dates_lst.push(local_time)
             }
             else{
@@ -78,6 +80,14 @@ function updateGraphs(charts_data_dic, interval){
                     pointHitRadius: 4,
                     borderColor: 'rgba(190,100,30,0.6)',
                 }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: index
+                    }
+                }
             },
         
         });

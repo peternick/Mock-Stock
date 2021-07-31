@@ -33,9 +33,14 @@
 .chart_btn{
     border-radius: 0.5em;
 }
+.chart-title{
+    text-shadow: -1px -1px 2px rgb(22, 110, 22);
+    color: rgb(122, 196, 11);
+}
 
 .main_section{
-    margin-bottom: 8vw;
+    padding-bottom: 4vw;
+    margin-bottom: 2vw;
 }
 
 
