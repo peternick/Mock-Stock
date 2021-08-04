@@ -12,6 +12,7 @@ def login(request):
         elif request.POST.__contains__('login_btn'):
             user = request.POST.get("username")
             passwd = request.POST.get("password")
+            request.session['username'] = user
             accnt = Account.objects.all().filter(username=user, password=passwd)
             if accnt.exists():
                 return redirect('home/')

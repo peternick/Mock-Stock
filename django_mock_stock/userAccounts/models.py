@@ -7,5 +7,11 @@ class Account(models.Model):
 
     def __str__(self) -> str:
         return self.username
+
+    def get_account_val(self):
+        return self.account_value
+    
+    def get_balance(self):
+        return self.balance
     
 
