@@ -22,7 +22,7 @@ from userAccounts import views as userAccounts_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', userAccounts_views.login, name="login"),
-    path('home/', include(('main.urls', 'home'),namespace='home')),
+    path('home/', include('main.urls')),
     path('access_accounts', userAccounts_views.login, name="create")
 ]
 

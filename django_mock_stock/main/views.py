@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from userAccounts.models import Account
+from userAccounts.models import Stock
 import yfinance as yf
 import pandas as ps
 import json
@@ -53,7 +54,7 @@ def ticker_page(request):
         return render(request, 'error_page.html')
     # print(specified_ticker.history(period="1d", interval="30m").to_json(date_format="iso"))
     
-    dic = {"hist": ticker_hist, "info": ticker_info, "time_interval": "less_than_days"}
+    dic = json.dumps({"hist": ticker_hist, "info": ticker_info, "time_interval": "less_than_days"})
     context = {
         "ticker_data" : dic 
     }
