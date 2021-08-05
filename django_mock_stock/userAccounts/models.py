@@ -1,17 +1,26 @@
 from django.db import models
 
+class Stock(models.Model):
+    stock_ticker = models.CharField(max_length=6)
+    company_name = models.CharField(max_length=40)
+    number_stocks = models.PositiveIntegerField()
+    total_value = models.DecimalField(decimal_places=2, max_digits=12)
+
+    def __str__(self) -> str:
+        return self.stock_ticker
+        
 class Account(models.Model):
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=20)
-    balance = models.DecimalField(decimal_places=2, max_digits=9)
+    balance = models.DecimalField(decimal_places=2, max_digits=12)
+    account_value = models.DecimalField(decimal_places=2, max_digits=12, default=10000)
+    owned_stocks = models.ManyToManyField(Stock, db_table='stock_table', blank=True)
 
     def __str__(self) -> str:
         return self.username
-
+    
     def get_account_val(self):
-        return self.account_value
+        return float(self.account_value)
     
     def get_balance(self):
-        return self.balance
-    
-
+        return float(self.balance)
