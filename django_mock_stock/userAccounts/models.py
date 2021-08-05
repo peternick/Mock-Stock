@@ -12,7 +12,7 @@ class Stock(models.Model):
 class Account(models.Model):
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=20)
-    balance = models.DecimalField(decimal_places=2, max_digits=12)
+    balance = models.DecimalField(decimal_places=2, max_digits=12, default=10000)
     account_value = models.DecimalField(decimal_places=2, max_digits=12, default=10000)
     owned_stocks = models.ManyToManyField(Stock, db_table='stock_table', blank=True)
 
