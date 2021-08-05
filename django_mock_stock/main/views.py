@@ -33,10 +33,13 @@ def home(request):
         elif(index_name == "hist_nasdaq"):
             hist_nasdaq = new_data_lst[0]
 
-
+    user = request.session['username']
+    accnt_obj = Account.objects.get(username=user)
+    accnt_info = json.dumps({"balance": accnt_obj.get_balance(), "account_value": accnt_obj.get_account_val()})
     context = {
-        'hists': json.dumps({"hist_sp": hist_sp, "hist_dow": hist_dow, "hist_nasdaq": hist_nasdaq,}),
-        'interval_unit': interval_unit_lst
+        'hists': json.dumps({"hist_sp": hist_sp, "hist_dow": hist_dow, "hist_nasdaq": hist_nasdaq}),
+        'interval_unit': interval_unit_lst,
+        'account_info': accnt_info
     }
     return render(request, 'homepage.html', context)
 
