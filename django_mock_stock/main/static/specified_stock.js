@@ -1,7 +1,9 @@
 
 ticker_data_string = document.querySelector("#data_transfer").innerHTML
-filtered_data_str = pyJsonStr_to_jsJsonStr(ticker_data_string)
-ticker_data = JSON.parse(filtered_data_str)
+ticker_data = JSON.parse(ticker_data_string)
+
+document.querySelector("#stock_price").innerHTML = 'Current Stock Price: $' + ticker_data['info']['currentPrice']
+document.querySelector("#main_title").innerHTML = ticker_data['info']['shortName'] + '(' + ticker_data['info']['symbol'] + ')'
 
 updateGraph(ticker_data)
 
@@ -40,25 +42,6 @@ function updateGraph(ticker_data){
     
     });
 
-}
-
-// TODO: test for more edge cases
-function repl_correct_wrd(match, nth_str, offset, entire_str){
-    let repl = match.substring(0,1) + "\""
-    if(match.substring(0,1) === "\'"){
-        repl = "\"" + match.substring(1,2) 
-    }
-
-    return repl
-}
-
-// TODO: test for more edge cases
-function pyJsonStr_to_jsJsonStr(python_json_str){
-    let replace_singQuotes = python_json_str.replaceAll(/\W\'|\'\W/g, /* "\"" */ repl_correct_wrd)
-    let none_with_quotes = replace_singQuotes.replaceAll(/None/g, "\"None\"")
-    let conv_to_js_bools = none_with_quotes.replaceAll(/False/g, "false").replaceAll(/True/g, "true")
-    
-    return conv_to_js_bools
 }
 
 
