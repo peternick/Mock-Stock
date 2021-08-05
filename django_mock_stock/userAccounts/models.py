@@ -8,7 +8,8 @@ class Stock(models.Model):
 
     def __str__(self) -> str:
         return self.stock_ticker
-        
+
+
 class Account(models.Model):
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=20)

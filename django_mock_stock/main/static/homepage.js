@@ -30,7 +30,10 @@ for (i = 0; i < articles.length; i++) {
     }
 }
 
-
+account_data = document.querySelector("#account_info").innerHTML
+account_data_json = JSON.parse(account_data)
+document.querySelector("#balance_lbl").innerHTML = "Current Balance: $" + account_data_json['balance']
+document.querySelector("#accnt_val_lbl").innerHTML = "Account Value: $" + account_data_json['account_value']
 
 
 //  chartjs code 
