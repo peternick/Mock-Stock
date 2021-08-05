@@ -18,7 +18,6 @@ def login(request):
                 return redirect('home/')
  
         else:
-            print('here')
             user = request.POST.get("username")
             passwd = request.POST.get("password")
             form = AccountForm(request.POST or None)

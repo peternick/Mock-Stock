@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from userAccounts.models import Account
+from userAccounts.models import Stock
 import yfinance as yf
 import pandas as ps
 import json
@@ -32,10 +33,13 @@ def home(request):
         elif(index_name == "hist_nasdaq"):
             hist_nasdaq = new_data_lst[0]
 
-
+    user = request.session['username']
+    accnt_obj = Account.objects.get(username=user)
+    accnt_info = json.dumps({"balance": accnt_obj.get_balance(), "account_value": accnt_obj.get_account_val()})
     context = {
-        'hists': json.dumps({"hist_sp": hist_sp, "hist_dow": hist_dow, "hist_nasdaq": hist_nasdaq,}),
-        'interval_unit': interval_unit_lst
+        'hists': json.dumps({"hist_sp": hist_sp, "hist_dow": hist_dow, "hist_nasdaq": hist_nasdaq}),
+        'interval_unit': interval_unit_lst,
+        'account_info': accnt_info
     }
     return render(request, 'homepage.html', context)
 
@@ -53,7 +57,7 @@ def ticker_page(request):
         return render(request, 'error_page.html')
     # print(specified_ticker.history(period="1d", interval="30m").to_json(date_format="iso"))
     
-    dic = {"hist": ticker_hist, "info": ticker_info, "time_interval": "less_than_days"}
+    dic = json.dumps({"hist": ticker_hist, "info": ticker_info, "time_interval": "less_than_days"})
     context = {
         "ticker_data" : dic 
     }
