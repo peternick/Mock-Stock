@@ -1,4 +1,5 @@
 from django.db import models
+import decimal
 
 class Stock(models.Model):
     stock_ticker = models.CharField(max_length=6)
@@ -8,7 +9,19 @@ class Stock(models.Model):
 
     def __str__(self) -> str:
         return self.stock_ticker
+    
+    def get_num_stocks(self):
+        return int(self.number_stocks)
 
+    def get_total_val(self):
+        return float(self.total_value)    
+    
+    def set_num_stocks(self, num_stocks):
+        self.number_stocks = num_stocks
+
+    def set_total_val(self, value):
+        self.total_value = decimal.Decimal(value)  
+        
 
 class Account(models.Model):
     username = models.CharField(max_length=30)
