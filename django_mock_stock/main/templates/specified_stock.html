@@ -41,30 +41,38 @@
   </style>
   <body >
     <div class="d-none" id="data_transfer">{{ticker_data}}</div>
+    <div class="d-none" id="account_info">{{account_info}}</div>
+    <div class="d-none" id="stock_context">{{owned_stock_info}}</div>
     <div class="container-fluid">
       <h1 id="main_title" class="jumbotron p-1 mt-1 text-center">Company Name (ticker)</h1>
       <div class="row pt-4" id="transaction_info_and_chart">
         <div class="col-md-4 px-lg-2 text-left" id="fir">
-          <p class="pt-4">You Own: (num shares)</p>
-          <p>Current Value Of All Shares: num</p>
+          <p id="num_stocks_lbl" class="pt-4">You Own: 0 shares</p>
+          <p id="total_stocks_val_lbl">Current Value Of All Shares: $0</p>
           <p id="stock_price" class="mb-5">Stock Price: </p>
-          <div class="form-row pt-5">
-            <div class="col-xl-3 col-lg-4 col-md-5">
-              <p>Quantity: </p>
+          <form action="alter_user_stock" method="post">
+            {% csrf_token %}
+            <input id="transfer_ticker" class="d-none" type="text" name="searched_text">
+            <input id="transfer_company_name" class="d-none" type="text" name="company_name">
+            <input id="transfer_stock_price" class="d-none" type="text" name="stock_price">
+            <div class="form-row pt-5">
+              <div class="col-xl-3 col-lg-4 col-md-5">
+                <p>Quantity: </p>
+              </div>
+              <div class="col-md-4">
+                <input id="quantity_shares" class="form-control" type="text" name="quantity_shares" aria-label="quantity_shares">
+              </div>
             </div>
-            <div class="col-md-4">
-              <input class="form-control" type="text" name="quantity_shares_text" aria-label="quantity_shares">
+            <div class="form-row pt-2">
+              <div class="col-lg-3 col-md-4">
+                <button class="container-fluid btn btn-success" type="submit" name="buy_btn" value="buy">Buy</button>
+              </div>
+              <div class="col-lg-3 col-md-4">
+                <button class="container-fluid btn btn-warning" type="submit" name="sell_btn" value="sell">Sell</button>
+              </div>
             </div>
-          </div>
-          <div class="form-row pt-2">
-            <div class="col-lg-3 col-md-4">
-              <button class="container-fluid btn btn-success" type="submit" name="buy_btn" value="buy">Buy</button>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <button class="container-fluid btn btn-warning" type="submit" name="sell_btn" value="sell">Sell</button>
-            </div>
-          </div>
-          <p class="pt-5">Total Value: (val)</p>
+          </form>
+          <p class="pt-5">Total Value:</p>
         </div>
         <div class="col-md-7 col-sm-10 px-xs-0 px-xl-2" id="sec">
           <canvas id="stock_chart"></canvas>

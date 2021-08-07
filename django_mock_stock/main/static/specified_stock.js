@@ -1,6 +1,21 @@
+if(document.querySelector("#stock_context").innerHTML != "{}"){
+    stock_data = document.querySelector("#stock_context").innerHTML
+    stock_data_json = JSON.parse(stock_data)
+    document.querySelector("#num_stocks_lbl").innerHTML = "You Own: " + stock_data_json['num_shares']
+    document.querySelector("#total_stocks_val_lbl").innerHTML = "Current Value Of All Shares: $" + stock_data_json['total_val']
+}
+
+account_data = document.querySelector("#account_info").innerHTML
+account_data_json = JSON.parse(account_data)
+document.querySelector("#balance_lbl").innerHTML = "Current Balance: $" + account_data_json['balance']
+document.querySelector("#accnt_val_lbl").innerHTML = "Account Value: $" + account_data_json['account_value']
 
 ticker_data_string = document.querySelector("#data_transfer").innerHTML
 ticker_data = JSON.parse(ticker_data_string)
+
+document.querySelector("#transfer_stock_price").value = ticker_data['info']['currentPrice']
+document.querySelector("#transfer_ticker").value = ticker_data['info']['symbol'].toLowerCase()
+document.querySelector("#transfer_company_name").value = ticker_data['info']['shortName']
 
 document.querySelector("#stock_price").innerHTML = 'Current Stock Price: $' + ticker_data['info']['currentPrice']
 document.querySelector("#main_title").innerHTML = ticker_data['info']['shortName'] + '(' + ticker_data['info']['symbol'] + ')'
@@ -43,7 +58,6 @@ function updateGraph(ticker_data){
     });
 
 }
-
 
 
 function stndrd_minutes(minutes){
