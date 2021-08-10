@@ -13,6 +13,17 @@ document.querySelector("#accnt_val_lbl").innerHTML = "Account Value: $" + accoun
 ticker_data_string = document.querySelector("#data_transfer").innerHTML
 ticker_data = JSON.parse(ticker_data_string)
 
+typed_quantity = document.querySelector("#quantity_shares")
+// console.log(typed_quantity)
+typed_quantity.oninput =  () =>{
+        typed_quantity_lbl = parseFloat(typed_quantity.value)
+        total_val = typed_quantity_lbl * parseFloat(ticker_data['info']['currentPrice'])
+        if(isNaN(total_val)){
+            total_val = 0
+        }
+        document.querySelector("#total_val_lbl").innerHTML = "Total: $" + total_val
+    }
+
 document.querySelector("#transfer_stock_price").value = ticker_data['info']['currentPrice']
 document.querySelector("#transfer_ticker").value = ticker_data['info']['symbol'].toLowerCase()
 document.querySelector("#transfer_company_name").value = ticker_data['info']['shortName']

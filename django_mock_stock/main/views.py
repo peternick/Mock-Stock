@@ -65,10 +65,9 @@ def ticker_page(request):
     owned_stock_ctxt = {}
     try:
         stock_obj = accnt_obj.owned_stocks.get(stock_ticker=searched_input)
-        owned_stock_ctxt["num_shares"] = stock_obj.get_num_stocks()
-        owned_stock_ctxt["total_val"] = stock_obj.get_total_val()
+        owned_stock_ctxt["num_shares"] = int(stock_obj.number_stocks)
+        owned_stock_ctxt["total_val"] = float(decimal.Decimal(stock_obj.total_value))
         owned_stock_ctxt = json.dumps(owned_stock_ctxt)
-        print("wtf")
     except ObjectDoesNotExist as err:
         print(searched_input)
         pass
