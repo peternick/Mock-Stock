@@ -69,7 +69,6 @@ def ticker_page(request):
         owned_stock_ctxt["total_val"] = float(decimal.Decimal(stock_obj.total_value))
         owned_stock_ctxt = json.dumps(owned_stock_ctxt)
     except ObjectDoesNotExist as err:
-        print(searched_input)
         pass
 
     dic = json.dumps({"hist": ticker_hist, "info": ticker_info, "time_interval": "less_than_days"})
@@ -87,7 +86,7 @@ def alter_user_stock(request):
 
     stock_price = request.POST['stock_price']
     num_stocks = int(request.POST['quantity_shares'])
-    total_val = num_stocks * float(stock_price)
+    total_val = num_stocks * (decimal.Decimal(stock_price))
     try:
         stock_obj = accnt_obj.owned_stocks.get(stock_ticker=ticker)
         stock_obj.number_stocks = stock_obj.number_stocks + num_stocks
@@ -96,6 +95,9 @@ def alter_user_stock(request):
     except ObjectDoesNotExist as err:
         company = request.POST['company_name']
         stock_obj = accnt_obj.owned_stocks.create(stock_ticker=ticker, company_name=company, number_stocks=num_stocks, total_value=total_val)
+    
+    accnt_obj.balance = accnt_obj.balance - total_val
+    accnt_obj.save()
     
     return ticker_page(request)
 

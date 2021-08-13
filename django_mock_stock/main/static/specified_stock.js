@@ -14,10 +14,10 @@ ticker_data_string = document.querySelector("#data_transfer").innerHTML
 ticker_data = JSON.parse(ticker_data_string)
 
 typed_quantity = document.querySelector("#quantity_shares")
-// console.log(typed_quantity)
 typed_quantity.oninput =  () =>{
         typed_quantity_lbl = parseFloat(typed_quantity.value)
         total_val = typed_quantity_lbl * parseFloat(ticker_data['info']['currentPrice'])
+        total_val = parseFloat(total_val.toFixed(2))
         if(isNaN(total_val)){
             total_val = 0
         }
