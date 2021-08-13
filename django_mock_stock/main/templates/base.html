@@ -20,14 +20,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-label nav-item mt-sm-1">
+        <ul style="flex-direction: row;" class="navbar-nav mr-auto">
+          <li class="nav-label nav-item mt-sm-1 mx-auto">
             <h3 id="balance_lbl" class="nav_lbl">Current Balance: </h3>
           </li>
-          <li class="nav-label nav-item mt-sm-1 mx-5">
-            <h3 id="accnt_val_lbl" class="nav_lbl">Account Value: </h3>
+          <li class="nav-label nav-item mt-sm-1 mx-auto" >
+            <h3 id="accnt_val_lbl" class="nav_lbl mx-lg-4 mx-md-3">Account Value: </h3>
           </li>
-          <li class="nav-label nav-item">
+          <li class="nav-label nav-item mx-auto">
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Stats
@@ -40,10 +40,11 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline mr-lg-4" method="post" action="search_ticker">
+        <form style="padding-left: 0px;" class="justify-content-center form-inline" method="post" action="search_ticker">
           {% csrf_token %}
-          <input class="form-control mr-sm-2" type="text" name="searched_text" placeholder="Search Ticker" aria-label="Search">
-          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          <input id="search_bar" class="form-control mr-3 mr-md-2" type="text" name="searched_text" placeholder="Search Ticker" aria-label="Search">
+          <button class="btn btn-success mr-2 my-2 my-sm-0" type="submit">Search</button>
+          <a class="ml-2" href="#" style="color: rgb(9, 22, 211); min-width: 20%;">Logout</a>
         </form>
       </div>
     </nav>

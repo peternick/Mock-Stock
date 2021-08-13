@@ -44,3 +44,7 @@ p{
 #main_nav{
     background-color: grey;
 }
+
+#search_bar{
+    width: calc(30% + 4vw)
+}
